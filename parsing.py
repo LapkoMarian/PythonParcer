@@ -3,6 +3,7 @@ from datetime import date, timedelta
 import json
 import os
 from dotenv import load_dotenv
+from background import keep_alive
 
 load_dotenv()
 data_1 = os.getenv("api_id")
@@ -48,6 +49,6 @@ async def handler(event):
                 json.dump(file_names, outfile, indent=2)
             print('Запис у файл JSON виконаний!')
 
-
+keep_alive()
 client.start()
 client.run_until_disconnected()
